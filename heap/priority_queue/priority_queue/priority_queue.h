@@ -13,7 +13,6 @@ public:
 
 private:
 	vector< pair<int, int> > A;
-	void heap_sort();
 	void build_max_heap(int size);
 	void max_heapify(int i, int size);
 };

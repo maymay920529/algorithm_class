@@ -30,15 +30,7 @@ void priority_queue::build_max_heap(int size) {
 	}
 }
 
-void priority_queue::heap_sort() {
-	build_max_heap( A.size());
 
-	for (int i = A.size() - 1; i > 0; i--) {
-		swap(A[0], A[i]);
-		max_heapify( 0, i);
-	}
-
-}
 int priority_queue::increase_key(int x,int k) {
 	int i = 0;
 	while (i < A.size() && x != A[i].second) ++i;
