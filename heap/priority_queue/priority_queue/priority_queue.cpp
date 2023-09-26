@@ -44,6 +44,18 @@ int priority_queue::increase_key(int x,int k) {
 	return 0;
 }
 
+
+int priority_queue::decrease_key(int x, int k) {
+	int i = 0;
+	while (i < A.size() && x != A[i].second) ++i;
+	if (i == A.size())return -1;
+
+	A[i].first = k;
+	max_heapify(i,A.size());
+	return 0;
+}
+
+
 void priority_queue::insert(int x, int k) {
 	pair<int, int> val(k, x);
 	A.push_back(val);

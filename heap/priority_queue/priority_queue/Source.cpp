@@ -3,14 +3,22 @@
 #include "priority_queue.h"
 using namespace std;
 
+void extract_and_print(priority_queue &A) {
+	pair<int, int> element = A.extract_max();
+	cout << element.first << " " << element.second << endl;
+}
 int main() {
-	vector < pair<int, int> > arr = { pair<int,int>(10,20),pair<int,int>(30,20) ,pair<int,int>(5,25) ,pair<int,int>(10,60) ,pair<int,int>(40,70) };
+	// pair<int,int> a={key,value};
+
+	vector < pair<int, int> > arr = { {10,20} ,{30,20} ,{5,25} ,{10,60} ,{40,70} };
 	priority_queue pq(arr);
-	cout << pq.increase_key(20, 100) << endl;
-	cout << pq.extract_max().first << " " << pq.maximum().second << endl;
-	cout << pq.extract_max().first << " " << pq.maximum().second << endl;
-	cout << pq.extract_max().first << " " << pq.maximum().second << endl;
-	cout << pq.extract_max().first << " " << pq.maximum().second << endl;
+	cout << pq.increase_key(20, 100) << endl; //first argument: value, second augument: key
+	extract_and_print(pq);
+	extract_and_print(pq);
+	cout << pq.decrease_key(60, 2) << endl;  //first argument: value, second augument: key
+	extract_and_print(pq);
+	extract_and_print(pq);
+	extract_and_print(pq);
 
 }
 

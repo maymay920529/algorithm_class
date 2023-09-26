@@ -10,6 +10,7 @@ public:
 	pair<int,int> maximum();
 	pair<int,int> extract_max();
 	int increase_key(int x, int k);
+	int decrease_key(int x, int k);
 
 private:
 	vector< pair<int, int> > A;
