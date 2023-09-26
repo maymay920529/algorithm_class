@@ -13,7 +13,6 @@ vector<int> counting_sort(vector<int> A, int n, int k) {
 	for (int i = 1; i < k; ++i) C[i] += C[i - 1];
 
 	for (int i = n - 1; i >= 0; --i) {
-		C[A[i]];
 		B[C[A[i]]] = A[i];
 		C[A[i]] -= 1;
 	}
