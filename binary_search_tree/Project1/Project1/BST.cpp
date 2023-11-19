@@ -86,7 +86,7 @@ BST::BST(initializer_list<int> input) {
 	vector<int> input_arr(input.begin(), input.end());
 	sort(input_arr.begin(), input_arr.end());
 
-	_recursive_init(0, input_arr.size(), input_arr, root);
+	_recursive_init(0, input_arr.size(), input_arr, root.get_current());
 }
 
 void BST::_recursive_init(int start, int end, vector<int>& input_arr, TreeNode* node) {
@@ -110,49 +110,49 @@ void BST::_recursive_init(int start, int end, vector<int>& input_arr, TreeNode* 
 void BST::inorder_print() {
 	inorder_print(root);
 }
-void BST::inorder_print(TreeNode* start_node) {
-	if (start_node != NULL) {
-		inorder_print(start_node->left);
-		cout << start_node->key << " ";
-		inorder_print(start_node->right);
+void BST::inorder_print(iterator start_node) {
+	if (start_node.get_current() != NULL) {
+		inorder_print(start_node.get_current()->left);
+		cout << start_node.get_current()->key << " ";
+		inorder_print(start_node.get_current()->right);
 	}
 }
 
 void BST::preorder_print() {
 	preorder_print(root);
 }
-void BST::preorder_print(TreeNode* start_node) {
-	if (start_node != NULL) {
-		cout << start_node->key << " ";
-		preorder_print(start_node->left);
-		preorder_print(start_node->right);
+void BST::preorder_print(iterator start_node) {
+	if (start_node.get_current() != NULL) {
+		cout << start_node.get_current()->key << " ";
+		preorder_print(start_node.get_current()->left);
+		preorder_print(start_node.get_current()->right);
 	}
 }
 
 void BST::postorder_print() {
 	postorder_print(root);
 }
-void BST::postorder_print(TreeNode* start_node) {
-	if (start_node != NULL) {
-		postorder_print(start_node->left);
-		postorder_print(start_node->right);
-		cout << start_node->key << " ";
+void BST::postorder_print(iterator start_node) {
+	if (start_node.get_current() != NULL) {
+		postorder_print(start_node.get_current()->left);
+		postorder_print(start_node.get_current()->right);
+		cout << start_node.get_current()->key << " ";
 	}
 }
 
 BST::iterator BST::minimum() {
 	return minimum(root);
 }
-BST::iterator BST::minimum(TreeNode* node) {
-	while (node->left != NULL) node = node->left;
+BST::iterator BST::minimum(iterator node) {
+	while (node.get_current()->left != NULL) node = node.get_current()->left;
 	return node;
 }
 
 BST::iterator BST::maximum() {
 	return maximum(root);
 }
-BST::iterator BST::maximum(TreeNode* node) {
-	while (node->right != NULL) node = node->right;
+BST::iterator BST::maximum(iterator node) {
+	while (node.get_current()->right != NULL) node = node.get_current()->right;
 	return node;
 }
 
@@ -160,7 +160,7 @@ BST::iterator BST::maximum(TreeNode* node) {
 void BST::insert(int key) {
 	TreeNode* new_node = new TreeNode(key);
 
-	TreeNode* current_node = root;
+	TreeNode* current_node = root.get_current();
 	TreeNode* parent_node = NULL;
 	while (current_node != NULL) {
 		parent_node = current_node;

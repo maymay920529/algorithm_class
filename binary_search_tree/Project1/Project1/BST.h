@@ -18,11 +18,6 @@ private:
 
 
 class BST {
-private:
-	TreeNode* root = NULL;
-	void _recursive_init(int start, int end, vector<int>& input, TreeNode* node);
-	void _transplant(TreeNode* replaced_node, TreeNode* new_node);
-
 public:
 	class iterator {
 		friend class BST;
@@ -53,22 +48,26 @@ public:
 	//iterator begin();
 
 	void inorder_print();
-	void inorder_print(TreeNode* start_node);
+	void inorder_print(iterator start_node);
 	void preorder_print();
-	void preorder_print(TreeNode* start_node);
+	void preorder_print(iterator start_node);
 	void postorder_print();
-	void postorder_print(TreeNode* start_node);
+	void postorder_print(iterator start_node);
 
 	iterator minimum();
-	iterator minimum(TreeNode* node);
+	iterator minimum(iterator node);
 
 	iterator maximum();
-	iterator maximum(TreeNode* node);
+	iterator maximum(iterator node);
 
 	void insert(int key);
 	iterator remove(iterator node);
 
 
+private:
+	iterator root = NULL;
+	void _recursive_init(int start, int end, vector<int>& input, TreeNode* node);
+	void _transplant(TreeNode* replaced_node, TreeNode* new_node);
 
 
 };
